@@ -123,7 +123,7 @@
         <input id="pac-input" type="text"
             placeholder="Enter a location">
       </div>
-      <button id="searching" class="btn btn-default" type="submit" onclick="way();" value="washington">
+      <button id="searching" class="btn btn-default" type="submit" onclick="way();" >
     </div>
 
 
@@ -161,9 +161,10 @@
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         var waypts = [];
+        alert(document.getElementById('pac-input').value);
        
             waypts.push({
-              location: "New York, NY",
+              location: document.getElementById('pac-input').value,
               stopover: true
             });
         
