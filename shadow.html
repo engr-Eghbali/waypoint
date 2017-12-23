@@ -1,0 +1,44 @@
+<style>
+    #wrapper { position: relative; }
+    #over_map { position: absolute; top: 10px; left: 10px; z-index: 99; }
+ </style>
+ 
+ <div id="wrapper">
+  
+
+
+    <div id="map"></div>
+ 
+    </div>
+ 
+    <div id="over_map">
+ 
+        <div class="pac-card" id="pac-card" style="display: none;">
+            <div id="close-div">
+                <button id="close" class="btn btn-default" >*</button><br>
+            </div>
+            <div id="pac-container">
+             
+              <input id="pac-input" type="text"
+                  placeholder="Enter a location"><br>
+            </div>
+            <button id="add" class="btn btn-default" type="submit" style="margin-left:0em;" >add location</button><br><br>
+            <div id="routs"></div><br>
+            <button id="run" class="btn btn-default" type="submit" style="margin-left:0em;" >show schedules</button><br>
+            <div id="directions-panel"></div>
+          </div>
+          
+          
+          <!--<div id="map"></div> -->
+          
+          <button id="open-div" class="btn btn-default" style="margin-left:5em;">toggle</button>
+          <div id="infowindow-content">
+            <img src="" width="16" height="16" id="place-icon">
+            <span id="place-name"  class="title"></span><br>
+            <span id="place-address"></span>
+          </div>
+
+
+    </div>
+ </div>
+ 

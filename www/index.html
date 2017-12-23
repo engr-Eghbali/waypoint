@@ -4,6 +4,14 @@
     <title>Place Autocomplete</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
+
+
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -36,18 +44,22 @@
 
       .pac-card {
         margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
+        border-radius: 30px 0 0 10px;
         box-sizing: border-box;
         -moz-box-sizing: border-box;
         outline: none;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
+        background-color: #333;
         font-family: Roboto;
+       margin-right:0em;
+        margin-top:0em;
       }
 
       #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
+        padding-bottom: 1em;
+        margin-right: -8px;
+        padding-left: 0;
+        margin-top: 3em;
       }
 
       .pac-controls {
@@ -66,10 +78,10 @@
         font-family: Roboto;
         font-size: 15px;
         font-weight: 300;
-        margin-left: 12px;
+        margin-left: 0em;
         padding: 0 11px 0 13px;
         text-overflow: ellipsis;
-        width: 10em;
+        width: 8.5em;
       }
 
       #pac-input:focus {
@@ -83,20 +95,71 @@
         font-weight: 500;
         padding: 6px 12px;
       }
+      #directions-panel {
+        margin-top: 5px;
+        background-color: #F3D448;
+        padding: 0px;
+        overflow: scroll;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        height: 10em;
+        width: 12em;
+    }
+      #float{
+        width: 4.5em;
+        margin-left: 0em;
+        background-color: transparent;
+        background-image: url(./img/reload.png);
+        background-size: 3.5em 3.5em;
+        background-repeat: no-repeat;
+        margin-top: 0em;
+        height: 4em;
+        outline: none;
+    }
+      #routs {
+        margin-top: 0px;
+        background-color: #00AEFF;
+        padding: 0px;
+        overflow: scroll;
+        overflow-y: scroll;
+        overflow-x: scroll;
+        height: 10em;
+        width: 12em;
+      
+    }
+      element.style{
+              right: 20em;
+              top:50em;
+      }
     </style>
   </head>
   <body>
-    <div class="pac-card" id="pac-card">
-      <div>
-       
-      </div>
+    <div class="pac-card" id="pac-card" >
+      
+     <div id="layer1" style="display: none;background-color:#333;">
+      
       <div id="pac-container">
+       
         <input id="pac-input" type="text"
-            placeholder="Enter a location">
-            <button id="add" class="btn btn-default" type="submit" >add location</button>
+            placeholder="Enter a location"><br>
       </div>
+      <button id="add" class="btn btn-default" type="submit" style="margin-left:0em;outline: none;" >add location</button><br><br>
+      <div id="routs"></div><br>
+      <button id="run" class="btn btn-default" type="submit" style="margin-left:0em;outline: none;" >show schedules</button><br>
+      <div id="directions-panel"></div>
+      </div>
+
+      <div id="layer2">
+        <button id="float" class="btn btn-defualt" style="outline: none;"></span>  </button>
+      </div>
+
+
     </div>
+    
+    
     <div id="map"></div>
+
+   
     <div id="infowindow-content">
       <img src="" width="16" height="16" id="place-icon">
       <span id="place-name"  class="title"></span><br>
@@ -104,14 +167,82 @@
     </div>
 
     <script>
+      $( "#layer1" ).show( 250 );
      
      var waypts= [];
      var directionsService;//
      var directionsDisplay;//
+     var map;
+
+
+
+
+
+
+
+
+     function way() {
+       // setDelay(500); 
+         directionsService = new google.maps.DirectionsService;
+         directionsDisplay = new google.maps.DirectionsRenderer;
+      
+        directionsDisplay.setMap(map);
+
+      
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+      
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+      
+        
+
+        waypts.push({
+              location:" Montazerefaraj, Yazd Province, Yazd",
+              stopover: true
+            });
+        
+            waypts.push({
+              location: "Isfahan, Isfahan Province, Iran",
+              stopover: true
+            });
+        alert(waypts[2].location);
+        directionsService.route({
+          origin: waypts[0].location,
+          destination: waypts[2].location,
+          waypoints: waypts,
+          optimizeWaypoints: true,
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+            
+          if (status ==google.maps.DirectionsStatus.OK) {
+            alert(response.routes[0].legs[0].start_address);
+            directionsDisplay.setDirections(response);
+            var route = response.routes[0];
+            var summaryPanel = document.getElementById('directions-panel');
+            summaryPanel.innerHTML = '';
+            // For each route, display summary information.
+            for (var i = 0; i < route.legs.length; i++) {
+              var routeSegment = i + 1;
+              summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+                  '</b><br>';
+              summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+              summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+              summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+            }
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+
+
+
+
 
 
       function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
+         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 6,
             center: {lat: 31.85, lng: 51.25}
         });
@@ -181,14 +312,36 @@
               stopover: true
             });
       
-        
-            alert(waypts);
+            var node = document.createElement("LI");
+            var textnode = document.createTextNode(address);
+            node.appendChild(textnode);
+            document.getElementById("routs").appendChild(node);
+            
+        });
+        document.getElementById('run').addEventListener('click', function() {
+          
+      
+        way();
+            
         });
       
        
       
        
       }
+       var flg=0;
+      $( "#float" ).click(function() {
+        if(flg==0){
+          $( "#layer1" ).hide( 250 );
+          flg=1;
+        }else{
+          $( "#layer1" ).show( 250 );
+          flg=0;
+        }
+         
+         
+
+});
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz5BpdAj8m3NE-rS2kSfnNC6X1YUBESa0&libraries=places&callback=initMap"
         async defer></script>
