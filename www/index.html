@@ -98,7 +98,7 @@
       #directions-panel {
         margin-top: 5px;
         background-color: #F3D448;
-        padding: 0px;
+        padding: 5px;
         overflow: scroll;
         overflow-x: scroll;
         overflow-y: scroll;
@@ -119,7 +119,7 @@
       #routs {
         margin-top: 0px;
         background-color: #00AEFF;
-        padding: 0px;
+        padding: 5px;
         overflow: scroll;
         overflow-y: scroll;
         overflow-x: scroll;
@@ -144,7 +144,7 @@
             placeholder="Enter a location"><br>
       </div>
       <button id="add" class="btn btn-default" type="submit" style="margin-left:0em;outline: none;" >add location</button><br><br>
-      <div id="routs"></div><br>
+      <div id="routs" ></div><br>
       <button id="run" class="btn btn-default" type="submit" style="margin-left:0em;outline: none;" >show schedules</button><br>
       <div id="directions-panel"></div>
       </div>
@@ -197,16 +197,7 @@
       
         
 
-        waypts.push({
-              location:" Montazerefaraj, Yazd Province, Yazd",
-              stopover: true
-            });
-        
-            waypts.push({
-              location: "Isfahan, Isfahan Province, Iran",
-              stopover: true
-            });
-        alert(waypts[2].location);
+      
         directionsService.route({
           origin: waypts[0].location,
           destination: waypts[2].location,
@@ -238,10 +229,19 @@
 
 
 
-
+      var p2 = document.createElement("P");
+            var textnode = document.createTextNode(" <first/last>  entry is <start/end> position");
+            p2.appendChild(textnode);
+            document.getElementById("routs").appendChild(p2);
 
 
       function initMap() {
+       
+       
+       
+       
+       
+       
          map = new google.maps.Map(document.getElementById('map'), {
             zoom: 6,
             center: {lat: 31.85, lng: 51.25}
