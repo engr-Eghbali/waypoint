@@ -134,6 +134,18 @@
         outline: none;
         outline: none;
     }
+    #save{
+        width: 4em;
+        margin-left: 6.5em;
+        background-color: transparent;
+        background-image: url("diskette.svg");
+        background-size: 3em 3em;
+        background-repeat: no-repeat;
+        margin-top: 0em;
+        height: 4em;
+        outline: none;
+        outline: none;
+    }
     #layer2{
       margin-left: 1em;
       margin-top: -54em;
@@ -357,6 +369,7 @@
 
       <div id="layer2">
         <button id="float" class="btn btn-defualt" style="outline: none;"></span>  </button>
+        <button id="save" class="btn btn-defualt" style="outline: none;"></span>  </button>
       </div>
 
 
@@ -599,7 +612,7 @@ $( "#menu" ).click(function() {
   if(flg==1){
           $("#menu").hide(800);
           $( "#layer1" ).show( 1500 );
-          $( "#pac-card" ).show( 1300 );
+          $( "#pac-card" ).show( 2500 );
 
           flg=0;
   }
