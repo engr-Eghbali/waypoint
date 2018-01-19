@@ -193,27 +193,135 @@
         outline: none;
       }
       #menu{
-        margin-left: 2em;
-        margin-top: 11em;
-       
         
+        position: absolute;
+        z-index: 99;
         background-image: url("menu.svg");
         background-size: 4em 4em;
         background-repeat: no-repeat;
-        width: 5em;
-        height: 5em;
-        background-color: transparent;
-        outline: none
+        background-position-x: 20%;
+        background-position-y: 80%;
+        width: 10em;
+        height: 10em;
+        border-radius: 50%;
+        background-color: #412f50;
+        outline: none;
+        right: -15%;
+        top: -10%;
+      }
+     
+
+      #loading{
+        background-color: #412f50;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        margin-top: 0px;
+        top: 0px;
+      }
+      #loading-center{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        }
+      #loading-center-absolute {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        height: 200px;
+        width: 200px;
+        margin-top: -100px;
+        margin-left: -100px;	
+      
+      }
+      .object{
+          -moz-border-radius: 50% 50% 50% 50%;
+        -webkit-border-radius: 50% 50% 50% 50%;
+        border-radius: 50% 50% 50% 50%;
+        position: absolute;
+        border-left: 5px solid #efd072;
+        border-right: 5px solid #efd072;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        -webkit-animation: animate 2s infinite;
+        animation: animate 2s infinite;	
+        }
+      
+      #object_one{
+        left: 75px;
+        top: 75px;
+        width: 50px;
+        height: 50px;
+        }
+                    
+      #object_two{
+        left: 65px;
+        top: 65px;
+        width: 70px;
+        height: 70px;
+        -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+        }
+          
+      #object_three{
+        left: 55px;
+        top: 55px;
+        width: 90px;
+        height: 90px;
+        -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+        }
+      #object_four{
+        left: 45px;
+        top: 45px;
+        width: 110px;
+        height: 110px;
+        -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+        
+        }	
+      
+      @-webkit-keyframes animate {
+       
+      
+      50% {
+        -ms-transform: rotate(180deg); 
+           -webkit-transform: rotate(180deg); 
+          transform: rotate(180deg); 
+        }
+          
+      100% {
+        -ms-transform: rotate(0deg); 
+           -webkit-transform: rotate(0deg); 
+          transform: rotate(0deg); 
+        }	  
+      
+      }
+      
+      @keyframes animate {
+      
+      50% {
+        -ms-transform: rotate(180deg); 
+           -webkit-transform: rotate(180deg); 
+          transform: rotate(180deg); 
+        }
+          
+      100% {
+        -ms-transform: rotate(0deg); 
+           -webkit-transform: rotate(0deg); 
+          transform: rotate(0deg); 
+        }	  
+      
         
       }
-      #bar{
-        position: absolute; top: -23%; right: -22%; z-index: 99;
-        background-color: #5e3c58;
-        width: 47%;
-        height: 36%;
-        border-radius: 100%;
-        
-      }
+      
+      @font-face {
+    font-family: myFirstFont;
+    src: url(IRANSans.woff);
+}
+      
+
     </style>
   </head>
 
@@ -225,11 +333,11 @@
       
       <div id="pac-container">
        
-        <input id="pac-input" type="text" placeholder="نام مکان را وارد کنید"><br>
+        <input id="pac-input" type="text" style="font-family: myFirstFont;" placeholder="نام مکان را وارد کنید"><br>
       </div>
       <button id="add" class="btn btn-default" type="submit" style="outline: none;" ></button><br><br>
-      <div id="routs" ></div><br>
-      <button id="run" class="btn btn-default" type="submit" style="margin-left:0em;outline: none;" >نمایش مسیر</button><br>
+      <div id="routs" style="font-family: myFirstFont;" ></div><br>
+      <button id="run" class="btn btn-default" type="submit" style="margin-left:0em;outline: none;font-family: myFirstFont;" >نمایش مسیر</button><br>
       <div id="directions-panel"></div>
       </div>
 
@@ -239,9 +347,27 @@
 
 
     </div>
-    <div id="bar" style="display:none;">
-    <button id="menu"  style="outline: transparent;border:none;" ></button>
-  </div>
+
+
+
+    <div id="loading">
+        <div id="loading-center">
+        <div id="loading-center-absolute">
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_one"></div>
+        
+        </div>
+        </div>
+         
+        </div>
+        
+
+
+    <!--<div id="bar" style="display:none;">-->
+    <button id="menu" class="btn btn-defualt" style="outline: transparent;border:none;" ></button>
+  <!-- </div>-->
     <div id="map">
        
     </div>
@@ -259,8 +385,21 @@
 
 
     <script>
-      $( "#layer1" ).show( 250 );
-      $( "#pac-card" ).show( 250 );
+
+var lchecker=1;
+$(window).load(function() {
+
+	$("#loading").fadeOut(800);
+	lchecker=0;
+
+});
+
+      $(document).ready(function(){
+       
+      $("#menu").show(2250);
+
+      });
+      
      
      var waypts= [];
      var directionsService;//
@@ -314,7 +453,7 @@
 
 
       var p2 = document.createElement("P");
-            var textnode = document.createTextNode(" مبدا،مقصد و سپس مسیرهای دلخواه را اضافه کنید");
+            var textnode = document.createTextNode(" مبدا،مقصد و سپس مسیرهای دلخواه را به ترتیب اضافه کنید");
             p2.appendChild(textnode);
             document.getElementById("routs").appendChild(p2);
 
@@ -422,15 +561,15 @@
       
        
       }
-       var flg=0;
+       var flg=1;
       $( "#float" ).click(function() {
         if(flg==0){
           $( "#layer1" ).hide( 1500 );
           $( "#pac-card" ).hide( 1300 );
-          $("#bar").show(1800);
+          $("#menu").show(1800);
           flg=1;
         }else{
-          $("#bar").hide(800);
+          $("#menu").hide(800);
           $( "#layer1" ).show( 1500 );
           $( "#pac-card" ).show( 1300 );
 
@@ -441,13 +580,14 @@
 });
 $( "#menu" ).click(function() {
   if(flg==1){
-          $("#bar").hide(800);
+          $("#menu").hide(800);
           $( "#layer1" ).show( 1500 );
           $( "#pac-card" ).show( 1300 );
 
           flg=0;
   }
 });
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz5BpdAj8m3NE-rS2kSfnNC6X1YUBESa0&libraries=places&callback=initMap"
         async defer></script>
