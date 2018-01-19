@@ -44,15 +44,20 @@
 
       .pac-card {
         margin: 10px 10px 0 0;
-        border-radius: 30px 0 0 10px;
+        border-radius: 0px 0px 0px 0px;
         box-sizing: border-box;
         -moz-box-sizing: border-box;
         outline: none;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #333;
+        background-color: #412f50;
+        background-image: url("Untitled-4.svg");
+        background-repeat: repeat;
+        background-size: 30em 30em;
         font-family: Roboto;
-       margin-right:0em;
+        margin-right:0em;
         margin-top:0em;
+        height: 100%;
+        width: 60%;
       }
 
       #pac-container {
@@ -77,11 +82,17 @@
         background-color: #fff;
         font-family: Roboto;
         font-size: 15px;
-        font-weight: 300;
-        margin-left: 0em;
+        font-weight: 600;
+        margin-left: 0.5em;
         padding: 0 11px 0 13px;
         text-overflow: ellipsis;
-        width: 8.5em;
+        width: 9.4em;
+        height: 2.4em;
+        border: 0.2em solid #efd072;
+        border-top-right-radius: 0em;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 1em;
+        border-bottom-left-radius: 1em;
       }
 
       #pac-input:focus {
@@ -97,55 +108,128 @@
       }
       #directions-panel {
         margin-top: 5px;
-        background-color: #F3D448;
+        background-color: #190330;;
         padding: 5px;
         overflow: scroll;
         overflow-x: scroll;
         overflow-y: scroll;
-        height: 10em;
-        width: 12em;
+        height: 12em;
+        width: 99%;
+        border: 0.1em solid #fff;
+        border-radius: 6%;
+        color: aliceblue;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 1.5em;
+        font-weight: 400;
     }
       #float{
-        width: 4.5em;
-        margin-left: 0em;
+        width: 4em;
+        margin-left: -0.5em;
         background-color: transparent;
-        background-image: url(./img/reload.png);
-        background-size: 3.5em 3.5em;
+        background-image: url("cancel.svg");
+        background-size: 3em 3em;
         background-repeat: no-repeat;
         margin-top: 0em;
         height: 4em;
         outline: none;
+        outline: none;
+    }
+    #layer2{
+      margin-left: 1em;
+      margin-top: -54em;
     }
       #routs {
-        margin-top: 0px;
-        background-color: #00AEFF;
+        margin-top: -5%;
+        background-color: #190330;;
         padding: 5px;
         overflow: scroll;
         overflow-y: scroll;
         overflow-x: scroll;
-        height: 10em;
-        width: 12em;
+        height: 12em;
+        width: 99%;
+        border: 0.1em solid #fff;
+        border-radius: 6%;
+        color: aliceblue;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 1.5em;
+        font-weight: 400;
       
     }
       element.style{
               right: 20em;
               top:50em;
       }
+      #layer1{
+             background-image: url("Untitled-4.svg");
+             background-color: #412f50;
+             background-repeat: repeat;
+             background-size: 30em 30em;
+             margin-top: 40%;
+      }
+      #add{
+        margin-left: 11em;
+        margin-top: -5em;
+        border-top-right-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 0em;
+        border-bottom-left-radius: 0em;
+        border:0.2em solid #efd072;
+        font-weight: 800;
+        background-image: url("add.svg");
+        background-size: 1.5em 1.5em;
+        background-repeat: no-repeat;
+        width: 2.8em;
+        height: 2.5em;
+        background-position-x: 0.2em;
+        background-position-y: 0.2em;
+        background-color: #190330;
+        outline: none;
+       
+
+      }
+      #run{
+        border:0.2em solid #efd072;
+        font-weight: 800;
+        outline: none;
+      }
+      #menu{
+        margin-left: 2em;
+        margin-top: 11em;
+       
+        
+        background-image: url("menu.svg");
+        background-size: 4em 4em;
+        background-repeat: no-repeat;
+        width: 5em;
+        height: 5em;
+        background-color: transparent;
+        outline: none
+        
+      }
+      #bar{
+        position: absolute; top: -23%; right: -22%; z-index: 99;
+        background-color: #5e3c58;
+        width: 47%;
+        height: 36%;
+        border-radius: 100%;
+        
+      }
     </style>
   </head>
+
   <body>
-    <div class="pac-card" id="pac-card" >
-      
-     <div id="layer1" style="display: none;background-color:#333;">
+     
+    <div class="pac-card" id="pac-card" style="display: none;">
+        
+     <div id="layer1" style="display: none;">
       
       <div id="pac-container">
        
-        <input id="pac-input" type="text"
-            placeholder="Enter a location"><br>
+        <input id="pac-input" type="text" placeholder="نام مکان را وارد کنید"><br>
       </div>
-      <button id="add" class="btn btn-default" type="submit" style="margin-left:0em;outline: none;" >اضافه کردن مبدا</button><br><br>
+      <button id="add" class="btn btn-default" type="submit" style="outline: none;" ></button><br><br>
       <div id="routs" ></div><br>
-      <button id="run" class="btn btn-default" type="submit" style="margin-left:0em;outline: none;" >show schedules</button><br>
+      <button id="run" class="btn btn-default" type="submit" style="margin-left:0em;outline: none;" >نمایش مسیر</button><br>
       <div id="directions-panel"></div>
       </div>
 
@@ -155,9 +239,12 @@
 
 
     </div>
-    
-    
-    <div id="map"></div>
+    <div id="bar" style="display:none;">
+    <button id="menu"  style="outline: transparent;border:none;" ></button>
+  </div>
+    <div id="map">
+       
+    </div>
 
    
     <div id="infowindow-content">
@@ -166,19 +253,19 @@
       <span id="place-address"></span>
     </div>
 
+
+
+
+
+
     <script>
       $( "#layer1" ).show( 250 );
+      $( "#pac-card" ).show( 250 );
      
      var waypts= [];
      var directionsService;//
      var directionsDisplay;//
      var map;
-
-
-
-
-
-
 
 
      function way() {
@@ -195,8 +282,6 @@
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
       
-        
-
       
         directionsService.route({
           origin: waypts[0].location,
@@ -228,19 +313,15 @@
       }
 
 
-
       var p2 = document.createElement("P");
-            var textnode = document.createTextNode(" <first/last>  entry is <start/end> position");
+            var textnode = document.createTextNode(" مبدا،مقصد و سپس مسیرهای دلخواه را اضافه کنید");
             p2.appendChild(textnode);
             document.getElementById("routs").appendChild(p2);
 
 
       function initMap() {
        
-       
-       
-       
-       
+              
        
          map = new google.maps.Map(document.getElementById('map'), {
             zoom: 6,
@@ -264,9 +345,7 @@
         var infowindow = new google.maps.InfoWindow();
         var infowindowContent = document.getElementById('infowindow-content');
         infowindow.setContent(infowindowContent);
-
-
-      
+     
 
         autocomplete.addListener('place_changed', function() {
           infowindow.close();
@@ -307,18 +386,15 @@
         });
         document.getElementById('add').addEventListener('click', function() {
           
-         //   if(waypts.length==0){
-         //     $("add").text("اضافه کردن مبدا");
-         //     alert("empty");
-         //   }
+         
              
 
             if(waypts.length==0){
-              $("#add").text("اضافه کردن مقصد");
+              $("#pac-input").attr("placeholder","اضافه کردن مقصد");
               alert("one");
             }else{
 
-              $("#add").text("اضافه کردن مسیر");
+              $("#pac-input").attr("placeholder","اضافه کردن مسیر");
               alert("else");
             }
 
@@ -349,15 +425,28 @@
        var flg=0;
       $( "#float" ).click(function() {
         if(flg==0){
-          $( "#layer1" ).hide( 250 );
+          $( "#layer1" ).hide( 1500 );
+          $( "#pac-card" ).hide( 1300 );
+          $("#bar").show(1800);
           flg=1;
         }else{
-          $( "#layer1" ).show( 250 );
+          $("#bar").hide(800);
+          $( "#layer1" ).show( 1500 );
+          $( "#pac-card" ).show( 1300 );
+
           flg=0;
         }
-         
-         
+             
 
+});
+$( "#menu" ).click(function() {
+  if(flg==1){
+          $("#bar").hide(800);
+          $( "#layer1" ).show( 1500 );
+          $( "#pac-card" ).show( 1300 );
+
+          flg=0;
+  }
 });
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz5BpdAj8m3NE-rS2kSfnNC6X1YUBESa0&libraries=places&callback=initMap"
