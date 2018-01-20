@@ -343,13 +343,25 @@
     font-family: myFirstFont;
     src: url(IRANSans.woff);
 }
-      
+
+
+   #bar{
+     width:100%;
+     height: 2%;
+     background-color: #efd072;
+     right: 0%;
+     bottom: 0%;
+     position: absolute;
+     z-index: 1;
+   }   
 
     </style>
   </head>
 
   <body>
      
+
+    
     <div class="pac-card" id="pac-card" style="display: none;">
         
      <div id="layer1" style="display: none;">
@@ -392,7 +404,7 @@
         
 
 
-    <!--<div id="bar" style="display:none;">-->
+   <div id="bar" ></div>
     <button id="menu" class="btn btn-defualt" style="outline: transparent;border:none;" ></button>
   <!-- </div>-->
     <div id="map">
@@ -594,10 +606,21 @@ $(window).load(function() {
        var flg=1;
       $( "#float" ).click(function() {
         if(flg==0){
+
+          $("#bar").animate({
+            
+            height:"2%",
+            right:"0%",
+            bottom:"0%"
+          },1000);
+
+
+
           $( "#layer1" ).hide( 1500 );
           $( "#pac-card" ).hide( 1300 );
           $("#menu").show(1800);
           flg=1;
+         
         }else{
           $("#menu").hide(800);
           $( "#layer1" ).show( 1500 );
@@ -608,13 +631,63 @@ $(window).load(function() {
              
 
 });
+
+function goright(){
+  $("#bar").animate({
+       right:"-96%"
+       
+     },800);
+    
+     goup();
+     // call next function here - process(grapes); and so on...
+   
+}
+
+
+function firstpos(){
+  $("#bar").animate({
+ bottom:"100%"
+   
+ },800);
+
+ setTimeout(function(){
+   showthings();
+ },800);
+}
+
+function goup(){
+ 
+$("#bar").animate({
+  height:"100%"
+   
+ },800);
+
+
+
+ setTimeout(
+   function(){
+   firstpos();
+   },400);
+    
+   
+}
+
+function showthings(){
+
+  $("#menu").hide(800);
+          $( "#layer1" ).show( 800 );
+          $( "#pac-card" ).show( 800 );
+          flg=0;
+
+
+}
+
 $( "#menu" ).click(function() {
   if(flg==1){
-          $("#menu").hide(800);
-          $( "#layer1" ).show( 1500 );
-          $( "#pac-card" ).show( 2500 );
+    
+goright();
 
-          flg=0;
+         
   }
 });
 
