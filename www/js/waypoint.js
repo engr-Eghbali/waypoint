@@ -103,6 +103,7 @@ $(window).load(function() {
         var marker = new google.maps.Marker({
           position: latLong,
           map: map,
+          icon:"./css/img/position.png",
           title: 'Your Position'
         });
     

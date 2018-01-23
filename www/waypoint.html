@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place Autocomplete</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="./css/waypoint.css">
+   
+<style></style>
+  
+  </head>
+
+  <body>
+     
+
+    
+    <div class="pac-card" id="pac-card" style="display: none;">
+        
+     <div id="layer1" style="display: none;">
+      
+      <div id="pac-container">
+       
+        <input id="pac-input" type="text" style="font-family: myFirstFont;" placeholder="نام مکان را وارد کنید"><br>
+      </div>
+      <button id="add" class="btn btn-default" type="submit" style="outline: none;" ></button><br><br>
+      <div id="routs" style="font-family: myFirstFont;" ></div><br>
+      <button id="run" class="btn btn-default" type="submit" style="margin-left:0em;outline: none;font-family: myFirstFont;" >نمایش مسیر</button><br>
+     <div id="rstdiv">
+        <button id="rst" class="btn btn-default" type="submit" style="margin-left:1em;outline: none;font-family: myFirstFont;" >مسیر جدید</button><br>
+      </div>
+        <div id="directions-panel"></div>
+      </div>
+
+      <div id="layer2">
+        <button id="float" class="btn btn-defualt" style="outline: none;"></span>  </button>
+        <button id="save" class="btn btn-defualt" style="outline: none;"></span>  </button>
+      </div>
+
+
+    </div>
+
+
+
+    <div id="loading">
+        <div id="loading-center">
+        <div id="loading-center-absolute">
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_one"></div>
+        
+        </div>
+        </div>
+         
+        </div>
+        
+
+
+   <div id="bar" ></div>
+    <button id="menu" class="btn btn-defualt" style="outline: transparent;border:none;" ></button>
+  <!-- </div>-->
+    <div id="map">
+       
+    </div>
+
+   
+    <div id="infowindow-content">
+      <img src="" width="16" height="16" id="place-icon">
+      <span id="place-name"  class="title"></span><br>
+      <span id="place-address"></span>
+    </div>
+
+
+
+
+
+
+    <script>
+      
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz5BpdAj8m3NE-rS2kSfnNC6X1YUBESa0&libraries=places&callback=initMap"
+        async defer></script>
+        <script src="./js/waypoint.js"></script>
+  </body>
+</html>
