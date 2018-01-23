@@ -81,6 +81,7 @@ $(window).load(function() {
 
       function initMap(position) {
        
+        
         var longitude = position.coords.longitude;
         var latitude = position.coords.latitude;
         var latLong = new google.maps.LatLng(latitude, longitude);
@@ -102,6 +103,7 @@ $(window).load(function() {
         var marker = new google.maps.Marker({
           position: latLong,
           map: map,
+          icon:"./css/img/position.png",
           title: 'Your Position'
         });
     
